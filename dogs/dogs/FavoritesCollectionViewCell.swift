@@ -9,7 +9,7 @@ import UIKit
 
 class FavoritesCollectionViewCell: CollectionViewCell {
     
-    var titleLabel: UILabel = UILabel()
+    var titleLabel: UILabel = UILabel(frame: .zero)
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -17,6 +17,8 @@ class FavoritesCollectionViewCell: CollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        favoriteImageView.isHidden = true
         
         titleLabel.numberOfLines = 0
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

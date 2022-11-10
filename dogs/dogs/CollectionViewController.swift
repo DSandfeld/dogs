@@ -63,10 +63,12 @@ class CollectionViewController: UIViewController {
         viewModel?.imageLinks.asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: "collectionCell", cellType: CollectionViewCell.self)) { row, link, cell in
                 
+                let breedOfDog = self.title
                 DataProvider.shared.getImage(from: link, callback: { data in
-                    guard let data else { return }
+                    guard let data, let breed = breedOfDog else { return }
                     DispatchQueue.main.async {
-                        cell.imageView.image = UIImage(data: data)
+                        cell.dogImageView.image = UIImage(data: data)
+                        cell.toggleFavorite(isFavorite: StorageManager.shared.isItFavorite(breed: breed, index: row))
                     }
                 })
             }
@@ -80,25 +82,23 @@ class CollectionViewController: UIViewController {
 
 extension CollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         if let cellAtIndexPath = collectionView.cellForItem(at: indexPath) as? CollectionViewCell {
-            let imageViewFromCell = cellAtIndexPath.imageView
+            guard let breed = title else { return }
             
-            guard let image = imageViewFromCell.image, let title else { return }
+            if StorageManager.shared.isItFavorite(breed: breed, index: indexPath.row) {
+                StorageManager.shared.removeFromDocuments(breed: breed, atIndex: indexPath.row)
+                cellAtIndexPath.toggleFavorite(isFavorite: StorageManager.shared.isItFavorite(breed: breed, index: indexPath.row))
+                return
+            }
             
-            // saving it to photos of the device
+            guard let image = cellAtIndexPath.dogImageView.image else { return }
+            
+            // saving to photos of the device was an alternative, if not for a database of sorts
             //UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
             
             // this will save to the app documents
-            StorageManager.shared.saveToDocuments(image: image, title: title, indexPath: indexPath) { success in
-                var ac = UIAlertController()
-                if !success {
-                    ac = UIAlertController(title: "Save error", message: "Could not save at this time.", preferredStyle: .alert)
-                } else {
-                    ac = UIAlertController(title: "Saved!", message: "This photo has been saved to your favorites.", preferredStyle: .alert)
-                }
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                present(ac, animated: true)
+            StorageManager.shared.saveToDocuments(image: image, breed: breed, index: indexPath.row) { success in
+                cellAtIndexPath.toggleFavorite(isFavorite: StorageManager.shared.isItFavorite(breed: breed, index: indexPath.row))
             }
         }
         

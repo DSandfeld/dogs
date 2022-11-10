@@ -12,6 +12,15 @@ class StorageManager {
     
     var favoriteBreeds: [String] = []
     
+    var searchPath: String {
+        get {
+            let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+            let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
+            let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+            return paths.first!
+        }
+    }
+    
     static let shared = StorageManager()
     
     init() { }
@@ -21,9 +30,9 @@ class StorageManager {
         return paths[0]
     }
     
-    func saveToDocuments(image: UIImage, title: String, indexPath: IndexPath, withSucces: (Bool) -> ()) {
+    func saveToDocuments(image: UIImage, breed: String, index: Int, withSucces: (Bool) -> ()) {
         let storagePath = StorageManager.shared.getDocumentsDirectory()
-        let savingScheme = "\(title)-\(indexPath.row)"
+        let savingScheme = "\(breed)-\(index)"
         let fileUrl = storagePath.appendingPathComponent("\(savingScheme).png")
         
         if let imageData = image.pngData(), let _ = try? imageData.write(to: fileUrl) {
@@ -33,16 +42,26 @@ class StorageManager {
         }
     }
     
+    func removeFromDocuments(breed: String, atIndex: Int) {
+        do {
+            let file = "\(breed)-\(atIndex).png"
+            try FileManager.default.removeItem(at: getDocumentsDirectory().appendingPathComponent(file))
+        } catch {
+            print("someting happened")
+        }
+    }
+    
+    func isItFavorite(breed: String, index: Int) -> Bool {
+        guard let items = try? FileManager.default.contentsOfDirectory(atPath: searchPath) else { return false }
+        let isItFavorite = items.contains("\(breed)-\(index).png")
+        return isItFavorite
+    }
+    
     func getFavoritesFromDocuments() -> [String] {
-        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-        
-        if let dirPath = paths.first, var items = try? FileManager.default.contentsOfDirectory(atPath: dirPath) {
+        if var items = try? FileManager.default.contentsOfDirectory(atPath: searchPath) {
             var i = 0
             items.forEach { image in
-                let storagePath = dirPath
-                let extentedPath = storagePath.appending("/\(image)")
+                let extentedPath = searchPath.appending("/\(image)")
                 let replacedString = extentedPath.replacingOccurrences(of: " ", with: "%20")
                 
                 let nameComponents = image.components(separatedBy: "-")

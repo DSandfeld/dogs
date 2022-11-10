@@ -36,7 +36,6 @@ class FavoritesCollectionViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,7 +66,7 @@ class FavoritesCollectionViewController: UIViewController {
                 DataProvider.shared.getImageFromLocal( link, callback: { data in
                     guard let data else { return }
                     DispatchQueue.main.async {
-                        cell.imageView.image = UIImage(data: data)
+                        cell.dogImageView.image = UIImage(data: data)
                     }
                 })
                 
