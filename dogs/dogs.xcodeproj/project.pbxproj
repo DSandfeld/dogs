@@ -8,22 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		15A280662915116E0032624B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A280652915116E0032624B /* AppDelegate.swift */; };
-		15A280682915116E0032624B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A280672915116E0032624B /* SceneDelegate.swift */; };
 		15A2806A2915116E0032624B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A280692915116E0032624B /* ViewController.swift */; };
-		15A2806D2915116E0032624B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A2806B2915116E0032624B /* Main.storyboard */; };
 		15A2806F2915116F0032624B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A2806E2915116F0032624B /* Assets.xcassets */; };
-		15A280722915116F0032624B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A280702915116F0032624B /* LaunchScreen.storyboard */; };
+		15D0825E2915360700DF55D5 /* DogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D0825D2915360700DF55D5 /* DogTableViewCell.swift */; };
+		15D08264291A8BDA00DF55D5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D08263291A8BDA00DF55D5 /* CollectionViewController.swift */; };
+		15D08266291A8C2900DF55D5 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D08265291A8C2900DF55D5 /* CollectionViewCell.swift */; };
+		15D08268291A8E3000DF55D5 /* CollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D08267291A8E3000DF55D5 /* CollectionViewViewModel.swift */; };
+		15D0826A291A8EE500DF55D5 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D08269291A8EE500DF55D5 /* DataProvider.swift */; };
+		15D0826E291BE5F600DF55D5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D0826D291BE5F600DF55D5 /* StorageManager.swift */; };
+		15D08270291BF13200DF55D5 /* FavoritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D0826F291BF13200DF55D5 /* FavoritesCollectionViewController.swift */; };
+		15D08272291BF14E00DF55D5 /* FavoritesCollectionViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D08271291BF14E00DF55D5 /* FavoritesCollectionViewViewModel.swift */; };
+		15D08274291BF16900DF55D5 /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D08273291BF16900DF55D5 /* FavoritesCollectionViewCell.swift */; };
+		FD5D82DC671049724FC4460C /* Pods_dogs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4306FB69472E9C70B6861C86 /* Pods_dogs.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		15A280622915116E0032624B /* dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A280652915116E0032624B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		15A280672915116E0032624B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		15A280692915116E0032624B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		15A2806C2915116E0032624B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15A2806E2915116F0032624B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		15A280712915116F0032624B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15A280732915116F0032624B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15D0825D2915360700DF55D5 /* DogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogTableViewCell.swift; sourceTree = "<group>"; };
+		15D08263291A8BDA00DF55D5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		15D08265291A8C2900DF55D5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		15D08267291A8E3000DF55D5 /* CollectionViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewViewModel.swift; sourceTree = "<group>"; };
+		15D08269291A8EE500DF55D5 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		15D0826D291BE5F600DF55D5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		15D0826F291BF13200DF55D5 /* FavoritesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewController.swift; sourceTree = "<group>"; };
+		15D08271291BF14E00DF55D5 /* FavoritesCollectionViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewViewModel.swift; sourceTree = "<group>"; };
+		15D08273291BF16900DF55D5 /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		4306FB69472E9C70B6861C86 /* Pods_dogs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dogs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60AF7A5F9FDE56C11FF7791D /* Pods-dogs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dogs.debug.xcconfig"; path = "Target Support Files/Pods-dogs/Pods-dogs.debug.xcconfig"; sourceTree = "<group>"; };
+		83B84535FD098CD6DA3C346D /* Pods-dogs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dogs.release.xcconfig"; path = "Target Support Files/Pods-dogs/Pods-dogs.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD5D82DC671049724FC4460C /* Pods_dogs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +59,8 @@
 			children = (
 				15A280642915116E0032624B /* dogs */,
 				15A280632915116E0032624B /* Products */,
+				D2E846D5BD08A169A886C577 /* Pods */,
+				B6775CEEC6817D7136C09481 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +76,37 @@
 			isa = PBXGroup;
 			children = (
 				15A280652915116E0032624B /* AppDelegate.swift */,
-				15A280672915116E0032624B /* SceneDelegate.swift */,
 				15A280692915116E0032624B /* ViewController.swift */,
-				15A2806B2915116E0032624B /* Main.storyboard */,
+				15D0825D2915360700DF55D5 /* DogTableViewCell.swift */,
+				15D08263291A8BDA00DF55D5 /* CollectionViewController.swift */,
+				15D08267291A8E3000DF55D5 /* CollectionViewViewModel.swift */,
+				15D08265291A8C2900DF55D5 /* CollectionViewCell.swift */,
+				15D0826F291BF13200DF55D5 /* FavoritesCollectionViewController.swift */,
+				15D08271291BF14E00DF55D5 /* FavoritesCollectionViewViewModel.swift */,
+				15D08273291BF16900DF55D5 /* FavoritesCollectionViewCell.swift */,
+				15D08269291A8EE500DF55D5 /* DataProvider.swift */,
+				15D0826D291BE5F600DF55D5 /* StorageManager.swift */,
 				15A2806E2915116F0032624B /* Assets.xcassets */,
-				15A280702915116F0032624B /* LaunchScreen.storyboard */,
 				15A280732915116F0032624B /* Info.plist */,
 			);
 			path = dogs;
+			sourceTree = "<group>";
+		};
+		B6775CEEC6817D7136C09481 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4306FB69472E9C70B6861C86 /* Pods_dogs.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2E846D5BD08A169A886C577 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60AF7A5F9FDE56C11FF7791D /* Pods-dogs.debug.xcconfig */,
+				83B84535FD098CD6DA3C346D /* Pods-dogs.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15A280762915116F0032624B /* Build configuration list for PBXNativeTarget "dogs" */;
 			buildPhases = (
+				44719868634D79473A071106 /* [CP] Check Pods Manifest.lock */,
 				15A2805E2915116E0032624B /* Sources */,
 				15A2805F2915116E0032624B /* Frameworks */,
 				15A280602915116E0032624B /* Resources */,
+				B73730AC51C7354C50357A75 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,13 +169,53 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15A280722915116F0032624B /* LaunchScreen.storyboard in Resources */,
 				15A2806F2915116F0032624B /* Assets.xcassets in Resources */,
-				15A2806D2915116E0032624B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		44719868634D79473A071106 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dogs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B73730AC51C7354C50357A75 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dogs/Pods-dogs-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dogs/Pods-dogs-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dogs/Pods-dogs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		15A2805E2915116E0032624B /* Sources */ = {
@@ -139,31 +223,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A2806A2915116E0032624B /* ViewController.swift in Sources */,
+				15D08274291BF16900DF55D5 /* FavoritesCollectionViewCell.swift in Sources */,
 				15A280662915116E0032624B /* AppDelegate.swift in Sources */,
-				15A280682915116E0032624B /* SceneDelegate.swift in Sources */,
+				15D0826A291A8EE500DF55D5 /* DataProvider.swift in Sources */,
+				15D08266291A8C2900DF55D5 /* CollectionViewCell.swift in Sources */,
+				15D08270291BF13200DF55D5 /* FavoritesCollectionViewController.swift in Sources */,
+				15D08268291A8E3000DF55D5 /* CollectionViewViewModel.swift in Sources */,
+				15D0825E2915360700DF55D5 /* DogTableViewCell.swift in Sources */,
+				15D08264291A8BDA00DF55D5 /* CollectionViewController.swift in Sources */,
+				15D0826E291BE5F600DF55D5 /* StorageManager.swift in Sources */,
+				15D08272291BF14E00DF55D5 /* FavoritesCollectionViewViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		15A2806B2915116E0032624B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				15A2806C2915116E0032624B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		15A280702915116F0032624B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				15A280712915116F0032624B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		15A280742915116F0032624B /* Debug */ = {
@@ -282,6 +355,7 @@
 		};
 		15A280772915116F0032624B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60AF7A5F9FDE56C11FF7791D /* Pods-dogs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -290,9 +364,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dogs/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dog breeds";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To save photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -314,6 +388,7 @@
 		};
 		15A280782915116F0032624B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83B84535FD098CD6DA3C346D /* Pods-dogs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,9 +397,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dogs/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dog breeds";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To save photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
