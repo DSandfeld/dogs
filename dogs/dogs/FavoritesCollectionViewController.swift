@@ -66,11 +66,11 @@ class FavoritesCollectionViewController: UIViewController {
                 DataProvider.shared.getImageFromLocal( link, callback: { data in
                     guard let data else { return }
                     DispatchQueue.main.async {
-                        cell.dogImageView.image = UIImage(data: data)
+                        (cell as CollectionViewCell).dogImageView.image = UIImage(data: data)
                     }
                 })
                 
-                cell.titleLabel.text = StorageManager.shared.favoriteBreeds[row]
+                cell.titleLabel.text = StorageManager.shared.favoriteBreeds[row].0
             }
             .disposed(by: disposeBag)
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class StorageManager {
     
-    var favoriteBreeds: [String] = []
+    var favoriteBreeds: [(String, Int)] = []
     
     var searchPath: String {
         get {
@@ -46,8 +46,13 @@ class StorageManager {
         do {
             let file = "\(breed)-\(atIndex).png"
             try FileManager.default.removeItem(at: getDocumentsDirectory().appendingPathComponent(file))
+
+            favoriteBreeds.removeAll { favoriteBreed in
+                let match = favoriteBreed.0.elementsEqual(breed) && favoriteBreed.1 == atIndex
+                return match
+            }
         } catch {
-            print("someting happened")
+            print("could not find and delete file")
         }
     }
     
@@ -65,8 +70,11 @@ class StorageManager {
                 let replacedString = extentedPath.replacingOccurrences(of: " ", with: "%20")
                 
                 let nameComponents = image.components(separatedBy: "-")
-                if let breed = nameComponents.first {
-                    favoriteBreeds.append(breed)
+                if let breed = nameComponents.first, let last = nameComponents.last {
+                    let indexAndFileType = last.components(separatedBy: ".")
+                    if let indexOfImage = indexAndFileType.first, let indexInt = Int(indexOfImage) {
+                        favoriteBreeds.append((breed, indexInt))
+                    }
                 }
                 
                 items.insert(replacedString, at: i)
