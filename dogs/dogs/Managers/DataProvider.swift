@@ -51,6 +51,7 @@ class DataProvider {
         }
         
         if let url = URL(string: urlString) {
+            // TODO: return the task, so that it can be cancelled if needed
             URLSession.shared.dataTask(with: url) { data, _, error in
                 if let data, let response = try? JSONDecoder().decode(DogSingleImageResponse.self, from: data), let imageUrl = URL(string: response.message) {
                     URLSession.shared.dataTask(with: imageUrl) { data, _, error in
