@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CollectionViewController: UIViewController {
+class DetailsCollectionViewController: UIViewController {
     
     var disposeBag = DisposeBag()
     
@@ -26,7 +26,7 @@ class CollectionViewController: UIViewController {
     
     var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
-    var viewModel: CollectionViewViewModel?
+    var viewModel: DetailsCollectionViewViewModel?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -42,7 +42,7 @@ class CollectionViewController: UIViewController {
         title = viewModel?.title
         
         collectionView.collectionViewLayout = collectionViewLayout
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "collectionCell")
+        collectionView.register(DetailsCollectionViewCell.self, forCellWithReuseIdentifier: "collectionCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
         
@@ -61,7 +61,7 @@ class CollectionViewController: UIViewController {
     
     func setupBindings() {
         viewModel?.imageLinks.asObservable()
-            .bind(to: collectionView.rx.items(cellIdentifier: "collectionCell", cellType: CollectionViewCell.self)) { row, link, cell in
+            .bind(to: collectionView.rx.items(cellIdentifier: "collectionCell", cellType: DetailsCollectionViewCell.self)) { row, link, cell in
                 
                 let breedOfDog = self.title
                 DataProvider.shared.getImage(from: link, callback: { data in
@@ -80,9 +80,9 @@ class CollectionViewController: UIViewController {
     
 }
 
-extension CollectionViewController: UICollectionViewDelegate {
+extension DetailsCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cellAtIndexPath = collectionView.cellForItem(at: indexPath) as? CollectionViewCell {
+        if let cellAtIndexPath = collectionView.cellForItem(at: indexPath) as? DetailsCollectionViewCell {
             guard let breed = title else { return }
             
             if StorageManager.shared.isItFavorite(breed: breed, index: indexPath.row) {
@@ -107,7 +107,7 @@ extension CollectionViewController: UICollectionViewDelegate {
 }
 
 // photo handling
-extension CollectionViewController {
+extension DetailsCollectionViewController {
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         var ac = UIAlertController()

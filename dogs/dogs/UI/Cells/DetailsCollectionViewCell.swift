@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class DetailsCollectionViewCell: UICollectionViewCell {
     
     var dogImageView = UIImageView(frame: .zero)
     var favoriteImageView: UIImageView = UIImageView(frame: .zero)
@@ -43,8 +43,6 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        dogImageView.image = nil
-        favoriteImageView.image = nil
         super.prepareForReuse()
     }
     

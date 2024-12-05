@@ -62,8 +62,8 @@ class ViewController: UIViewController {
                 let mainBreed = selectedBreed[indexPath.row].0
                 let subbreed = selectedBreed[indexPath.row].1
                 
-                let imageGalleryVC = CollectionViewController()
-                let imageGalleryVM = CollectionViewViewModel(breed: mainBreed, subbreed: subbreed)
+                let imageGalleryVC = DetailsCollectionViewController()
+                let imageGalleryVM = DetailsCollectionViewViewModel(breed: mainBreed, subbreed: subbreed)
                 imageGalleryVC.viewModel = imageGalleryVM
                 
                 self.navigationController?.pushViewController(imageGalleryVC, animated: true)

@@ -8,7 +8,7 @@
 import RxSwift
 import RxCocoa
 
-class CollectionViewViewModel {
+class DetailsCollectionViewViewModel {
     
     var breed: String
     var subbreed: String?

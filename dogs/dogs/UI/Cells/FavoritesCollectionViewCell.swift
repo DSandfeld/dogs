@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoritesCollectionViewCell: CollectionViewCell {
+class FavoritesCollectionViewCell: DetailsCollectionViewCell {
     
     var titleLabel: UILabel = UILabel(frame: .zero)
     

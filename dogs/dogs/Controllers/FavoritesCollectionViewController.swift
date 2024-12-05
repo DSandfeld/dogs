@@ -66,7 +66,7 @@ class FavoritesCollectionViewController: UIViewController {
                 DataProvider.shared.getImageFromLocal( link, callback: { data in
                     guard let data else { return }
                     DispatchQueue.main.async {
-                        (cell as CollectionViewCell).dogImageView.image = UIImage(data: data)
+                        (cell as DetailsCollectionViewCell).dogImageView.image = UIImage(data: data)
                     }
                 })
                 
