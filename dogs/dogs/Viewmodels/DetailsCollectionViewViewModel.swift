@@ -28,8 +28,17 @@ class DetailsCollectionViewViewModel {
         self.breed = breed
         self.subbreed = subbreed
         
-        DataProvider.shared.imageLinks(breed, subbreed: subbreed) { links in
-            self.imageLinks.onNext(links)
+        DataProvider.shared.imageLinks(breed, subbreed: subbreed) { result in
+            switch (result) {
+            case .success(let response):
+                self.imageLinks.onNext(response.message)
+            case .failure(let error):
+                debugPrint(error)
+                self.imageLinks.onNext([])
+                // TODO: handle error
+            case .none:
+                break
+            }
         }
     }
     

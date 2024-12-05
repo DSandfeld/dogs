@@ -16,7 +16,8 @@ class DogTableViewCell: UITableViewCell {
         self.dogImageView = UIImageView()
         self.dogTitleLabel = UILabel()
         
-        dogImageView.contentMode = .scaleAspectFit
+        dogImageView.contentMode = .scaleAspectFill
+        dogImageView.clipsToBounds = true
         dogImageView.translatesAutoresizingMaskIntoConstraints = false
         dogTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -41,7 +42,6 @@ class DogTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        dogImageView.image = nil
         dogTitleLabel.text = nil
         super.prepareForReuse()
     }
@@ -64,18 +64,27 @@ class DogTableViewCell: UITableViewCell {
     
     func configureImage(with breed: String, subbreed: String? = nil) {
         
-        DataProvider.shared.getRandomImageFor(breed, subbreed: subbreed) { imageData in
-            guard
-                let imageData,
-                let image = UIImage(data: imageData)
-            else {
-                return
+        DataProvider.shared.getRandomImageFor(breed, subbreed: subbreed) { result in
+            
+            switch result {
+            case .success(let imageData):
+                guard let image = UIImage(data: imageData) else { return }
+                
+                DispatchQueue.main.async() { [weak self] in
+                    guard let self else { return }
+                    self.dogImageView.image = image
+                }
+                
+            case .failure(_):
+                DispatchQueue.main.async() { [weak self] in
+                    guard let self else { return }
+                    self.dogImageView.image = nil // TODO: use a placeholder as fallback
+                }
+                
+            case .none:
+                break
             }
             
-            DispatchQueue.main.async() { [weak self] in
-                guard let self else { return }
-                self.dogImageView.image = image
-            }
         }
     }
     

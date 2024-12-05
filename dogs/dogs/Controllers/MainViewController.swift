@@ -12,8 +12,9 @@ import RxCocoa
 class ViewController: UIViewController {
     
     private let tableView = UITableView()
-    private let racesSubject = BehaviorSubject<[(String, String?)]>(value: [])
     private let disposeBag = DisposeBag()
+    
+    private let viewModel = MainViewViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
         tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        racesSubject.asObservable()
+        viewModel.racesSubject.asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: "mainDogCell",
                                          cellType: DogTableViewCell.self)) { row, element, cell in
                 cell.configureTitle(with: element.0, subbreed: element.1)
@@ -42,7 +43,7 @@ class ViewController: UIViewController {
                                          .disposed(by: disposeBag)
         
         tableView.rx.willDisplayCell
-            .withLatestFrom(racesSubject) { ($0.0, $0.1, $1) }
+            .withLatestFrom(viewModel.racesSubject) { ($0.0, $0.1, $1) }
             .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInteractive))
             .subscribe(onNext: { cell, indexPath, races in
                 guard let dogCell = cell as? DogTableViewCell else { return }
@@ -56,7 +57,7 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.itemSelected
-            .withLatestFrom(racesSubject) { ($0, $1) }
+            .withLatestFrom(viewModel.racesSubject) { ($0, $1) }
             .subscribe { indexPath, selectedBreed in
                 
                 let mainBreed = selectedBreed[indexPath.row].0
@@ -71,9 +72,7 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
-        DataProvider.shared.getAllBreeds { allBreeds in
-            self.racesSubject.onNext(allBreeds)
-        }
+        viewModel.getAllBreeds()
     }
     
     @objc func goToFavorites(_ sender: UIEvent) {

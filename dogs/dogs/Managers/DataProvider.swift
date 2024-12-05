@@ -7,6 +7,16 @@
 
 import Foundation
 
+enum DogListError: Error {
+    case failedToFetchList
+}
+
+enum ImageError: Error {
+    case noResponseFromServer
+    case couldNotLoadImage
+    case failedToLoadImages
+}
+
 class DataProvider {
     
     static let shared = DataProvider()
@@ -14,38 +24,26 @@ class DataProvider {
     private let baseAPIstring = "https://dog.ceo/api/breed/"
     private let randomString = "/images/random"
     private let listString = "/images/list"
+    private let allBreedsLink = "https://dog.ceo/api/breeds/list/all"
     
     private var imageTask: URLSessionDataTask?
     
     private init() {}
     
-    func getAllBreeds(callback: @escaping ([(String, String?)]) -> ()) {
-        var racesWithSubbreeds: [(String, String?)] = []
+    func getDogBreeds(callback: @escaping (Result<DogBreedResponse, DogListError>?) -> ()) {
         
-        if let url = URL(string: "https://dog.ceo/api/breeds/list/all") {
-            URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-                guard let data else { return }
-                
-                if let dict = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, AnyObject>, let dogs = dict["message"] {
-                    
-                    if let races = dogs.keyEnumerator().allObjects as? [String] {
-                        races.forEach { race in
-                            if let subbreeds = dogs[race] as? [String], subbreeds.count > 0 {
-                                subbreeds.forEach { subbreed in
-                                    racesWithSubbreeds.append((race, subbreed))
-                                }
-                            } else {
-                                racesWithSubbreeds.append((race, nil))
-                            }
-                        }
-                        callback(racesWithSubbreeds)
-                    }
+        if let url = URL(string: allBreedsLink) {
+            URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+                if let data, let response = try? JSONDecoder().decode(DogBreedResponse.self, from: data) {
+                    callback(.success(response))
+                } else {
+                    callback(.failure(.failedToFetchList))
                 }
             }).resume()
         }
     }
     
-    func getRandomImageFor(_ breed: String, subbreed: String?, callback: @escaping (Data?) -> ()) {
+    func getRandomImageFor(_ breed: String, subbreed: String?, callback: @escaping (Result<Data, ImageError>?) -> ()) {
         var urlString = "\(baseAPIstring)\(breed)\(randomString)"
         
         if let subbreed {
@@ -53,25 +51,23 @@ class DataProvider {
         }
         
         if let url = URL(string: urlString) {
-            
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                
-                if let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200 {
-                    
-                    if let data = data, let dict = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, AnyObject>, let message = dict["message"] as? String, let newUrl = URL(string: message) {
-                        
-                        URLSession.shared.dataTask(with: newUrl) { data, response, error in
-                            if let data = data {
-                                callback(data)
-                            }
-                        }.resume()
-                    }
+            URLSession.shared.dataTask(with: url) { data, _, error in
+                if let data, let response = try? JSONDecoder().decode(DogSingleImageResponse.self, from: data), let imageUrl = URL(string: response.message) {
+                    URLSession.shared.dataTask(with: imageUrl) { data, _, error in
+                        if let data {
+                            callback(.success(data))
+                        } else {
+                            callback(.failure(.failedToLoadImages))
+                        }
+                    }.resume()
+                } else {
+                    callback(.failure(.couldNotLoadImage))
                 }
             }.resume()
         }
     }
     
-    func imageLinks(_ breed: String, subbreed: String?, callback: @escaping ([String]) -> ()) {
+    func imageLinks(_ breed: String, subbreed: String?, callback: @escaping (Result<DogMultipleImagesResponse, ImageError>?) -> ()) {
         var urlString = "\(baseAPIstring)\(breed)/images"
         
         if let subbreed {
@@ -80,16 +76,13 @@ class DataProvider {
         
         if let url = URL(string: urlString) {
             
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                
-                if let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200 {
-                    
-                    if let data = data, let dict = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, AnyObject> {
-                        if let message = dict["message"] as? [String] {
-                            callback(message)
-                        }
-                    }
+            URLSession.shared.dataTask(with: url) { data, _, error in
+                if let data, let response = try? JSONDecoder().decode(DogMultipleImagesResponse.self, from: data) {
+                    callback(.success(response))
+                } else {
+                    callback(.failure(.failedToLoadImages))
                 }
+                
             }.resume()
         }
     }
