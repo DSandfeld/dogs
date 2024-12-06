@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		152994D3291D304C005BC785 /* star.svg in Resources */ = {isa = PBXBuildFile; fileRef = 152994D2291D304C005BC785 /* star.svg */; };
+		152A7EC22D02E58200CE45D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152A7EC12D02E58100CE45D4 /* Localizable.strings */; };
 		15A280662915116E0032624B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A280652915116E0032624B /* AppDelegate.swift */; };
 		15A2806A2915116E0032624B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A280692915116E0032624B /* MainViewController.swift */; };
 		15A2806F2915116F0032624B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A2806E2915116F0032624B /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		152994D2291D304C005BC785 /* star.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = star.svg; sourceTree = "<group>"; };
+		152A7EC12D02E58100CE45D4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		15A280622915116E0032624B /* dogs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dogs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A280652915116E0032624B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A280692915116E0032624B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -89,16 +91,17 @@
 		15A280642915116E0032624B /* dogs */ = {
 			isa = PBXGroup;
 			children = (
-				15FB9E9C2D025F2100C4FE00 /* Responses */,
-				15FB9E8E2D01FD6100C4FE00 /* UI */,
-				15FB9E8D2D01FD4E00C4FE00 /* Viewmodels */,
-				15FB9E8C2D01FD4200C4FE00 /* Controllers */,
-				15FB9E8B2D01FC4200C4FE00 /* Managers */,
 				15FB9E862D01F94F00C4FE00 /* Models */,
+				15FB9E8C2D01FD4200C4FE00 /* Controllers */,
+				15FB9E8D2D01FD4E00C4FE00 /* Viewmodels */,
+				15FB9E8E2D01FD6100C4FE00 /* UI */,
+				15FB9E8B2D01FC4200C4FE00 /* Managers */,
+				15FB9E9C2D025F2100C4FE00 /* Responses */,
 				15A280652915116E0032624B /* AppDelegate.swift */,
 				15A2806E2915116F0032624B /* Assets.xcassets */,
 				152994D2291D304C005BC785 /* star.svg */,
 				15A280732915116F0032624B /* Info.plist */,
+				152A7EC12D02E58100CE45D4 /* Localizable.strings */,
 			);
 			path = dogs;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				152994D3291D304C005BC785 /* star.svg in Resources */,
+				152A7EC22D02E58200CE45D4 /* Localizable.strings in Resources */,
 				15A2806F2915116F0032624B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

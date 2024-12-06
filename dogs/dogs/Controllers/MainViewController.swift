@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "all breeds"
+        title = NSLocalizedString("mainview_nav_title", comment: "")
         
         let favoritesBarButton = UIBarButtonItem(systemItem: .bookmarks)
         favoritesBarButton.target = self

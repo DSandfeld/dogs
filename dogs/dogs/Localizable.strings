@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  dogs
+
+  Created by Daniel Sandfeld Jensen on 06/12/2024.
+  
+*/
+
+"mainview_nav_title" = "All breeds";
+"favorites_nav_title" = "Favorites";

@@ -12,12 +12,6 @@ class FavoritesCollectionViewViewModel {
     
     var imageLinks = BehaviorSubject<[String]>(value: [])
     
-    var title: String {
-        get {
-            return "Favorites"
-        }
-    }
-    
     init() {
         let links = StorageManager.shared.getFavoritesFromDocuments()
         imageLinks.onNext(links)

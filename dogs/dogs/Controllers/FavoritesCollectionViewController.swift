@@ -39,7 +39,7 @@ class FavoritesCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = viewModel?.title
+        title = NSLocalizedString("favorites_nav_title", comment: "")
         
         collectionView.collectionViewLayout = collectionViewLayout
         collectionView.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: "favoritesCell")
