@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-class StorageManager {
+class StorageManager: StorageInterface {
     
     var favoriteBreeds: [(String, Int)] = []
     
-    var searchPath: String {
+    private var searchPath: String {
         get {
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
             let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
@@ -25,7 +25,7 @@ class StorageManager {
     
     init() { }
     
-    func getDocumentsDirectory() -> URL {
+    private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
@@ -87,4 +87,11 @@ class StorageManager {
         return []
     }
     
+    func getImageFromLocal(_ link: String, callback: @escaping (Data?) -> ()) {
+        if let url = URL(string: "file://\(link)") {
+            if let imageData = try? Data(contentsOf: url) {
+                callback(imageData)
+            }
+        }
+    }
 }

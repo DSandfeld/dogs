@@ -28,7 +28,7 @@ class DetailsCollectionViewViewModel {
         self.breed = breed
         self.subbreed = subbreed
         
-        DataProvider.shared.imageLinks(breed, subbreed: subbreed) { result in
+        NetworkService.shared.imageLinks(breed, subbreed: subbreed) { result in
             switch (result) {
             case .success(let response):
                 self.imageLinks.onNext(response.message)

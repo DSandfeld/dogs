@@ -15,7 +15,7 @@ class MainViewViewModel {
     
     
     public func getAllBreeds() {
-        DataProvider.shared.getDogBreeds { result in
+        NetworkService.shared.getDogBreeds { result in
             
             switch result {
             case .success(let response):

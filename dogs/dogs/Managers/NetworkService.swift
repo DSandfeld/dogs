@@ -1,5 +1,5 @@
 //
-//  DataProvider.swift
+//  NetworkService.swift
 //  dogs
 //
 //  Created by Daniel Sandfeld Jensen on 08/11/2022.
@@ -7,19 +7,9 @@
 
 import Foundation
 
-enum DogListError: Error {
-    case failedToFetchList
-}
-
-enum ImageError: Error {
-    case noResponseFromServer
-    case couldNotLoadImage
-    case failedToLoadImages
-}
-
-class DataProvider {
+class NetworkService: NetworkInterface {
     
-    static let shared = DataProvider()
+    static let shared = NetworkService()
     
     private let baseAPIstring = "https://dog.ceo/api/breed/"
     private let randomString = "/images/random"
@@ -87,15 +77,7 @@ class DataProvider {
             }.resume()
         }
     }
-    
-    func getImageFromLocal(_ link: String, callback: @escaping (Data?) -> ()) {
-        if let url = URL(string: "file://\(link)") {
-            if let imageData = try? Data(contentsOf: url) {
-                callback(imageData)
-            }
-        }
-    }
-    
+
     func getImage(from link: String, callback: @escaping (Data?) -> ()) {
         if let url = URL(string: link) {
             URLSession.shared.dataTask(with: url) { data, response, error in

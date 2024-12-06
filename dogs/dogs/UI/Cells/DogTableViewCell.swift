@@ -64,7 +64,7 @@ class DogTableViewCell: UITableViewCell {
     
     func configureImage(with breed: String, subbreed: String? = nil) {
         
-        DataProvider.shared.getRandomImageFor(breed, subbreed: subbreed) { result in
+        NetworkService.shared.getRandomImageFor(breed, subbreed: subbreed) { result in
             
             switch result {
             case .success(let imageData):

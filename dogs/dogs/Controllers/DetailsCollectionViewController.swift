@@ -64,7 +64,7 @@ class DetailsCollectionViewController: UIViewController {
             .bind(to: collectionView.rx.items(cellIdentifier: "collectionCell", cellType: DetailsCollectionViewCell.self)) { row, link, cell in
                 
                 let breedOfDog = self.title
-                DataProvider.shared.getImage(from: link, callback: { data in
+                NetworkService.shared.getImage(from: link, callback: { data in
                     guard let data, let breed = breedOfDog else { return }
                     DispatchQueue.main.async {
                         cell.dogImageView.image = UIImage(data: data)

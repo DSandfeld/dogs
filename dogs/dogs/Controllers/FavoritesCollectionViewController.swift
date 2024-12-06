@@ -63,7 +63,7 @@ class FavoritesCollectionViewController: UIViewController {
         viewModel?.imageLinks.asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: "favoritesCell", cellType: FavoritesCollectionViewCell.self)) { row, link, cell in
                 
-                DataProvider.shared.getImageFromLocal( link, callback: { data in
+                StorageManager.shared.getImageFromLocal( link, callback: { data in
                     guard let data else { return }
                     DispatchQueue.main.async {
                         (cell as DetailsCollectionViewCell).dogImageView.image = UIImage(data: data)
